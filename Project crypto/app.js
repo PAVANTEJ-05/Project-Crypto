@@ -1,10 +1,11 @@
 
 window.onload = function  (){
- const  storedBalance =  localStorage.getItem('balanceValue');
+    const username = localStorage.getItem('username')
+ const  storedBalance =  localStorage.getItem(`${username}_balanceValue`);
    if( storedBalance !==null) {
 document.getElementById('balance').innerText = parseFloat(storedBalance);
    }
-   const storedTrans =JSON.parse(localStorage.getItem('transactions')) || [] ;
+   const storedTrans =JSON.parse(localStorage.getItem(`${username}_transactions`)) || [] ;
 const storedList = document.getElementById('transactionList')
 if(storedList !== null && storedTrans !== null && storedTrans !== undefined && storedList !== undefined){
     storedTrans.forEach( trans =>{
@@ -26,8 +27,6 @@ function openSignupPopup() {
 function closePopup(id){
     document.getElementById(id).style.display='none';
 }
-
-
 function showTransferForm() {
     document.getElementById('transferForm').style.display = 'block';
       }
@@ -37,7 +36,6 @@ function showBalance(){
 function showTransactionHistory() {
     document.getElementById('transactionHistory').style.display = 'block';
 }
-
   const transfer= document.getElementById('transfer'),
         balance = document.getElementById('balance'),
         transferAmount=document.getElementById('transferAmount')
@@ -50,41 +48,25 @@ function showTransactionHistory() {
         alert("You don't have that much balance to withdraw");
     }  else {
         const balanceValue = Number(balance.innerText) - Number(value);
-       // const transferValue = Number(transfer.innerText) + Number(value);
-       // transfer.innerText = transferValue;
         balance.innerText = balanceValue;
         transferAmount.value = '';
-        localStorage.setItem('balanceValue',balanceValue);
-        alert(`$${value} succesfully transferred to the profile B. `);
+        localStorage.setItem(`${username}_balanceValue`,balanceValue);
+        alert(`${value}BTC succesfully transferred to the profile B. `);
         simulateTransaction(value,'debit');
     }
 })  
-
-
-// function simulateTransaction(amount, type) {
-//     const transactionList = document.getElementById('transactionList');
-//     const listItem = document.createElement('li');
-// const transText = `${type === 'debit' ? '-' : '+'}$${amount}, ${new Date().toLocaleString()}`;
-//      listItem.textContent=transText;
-//    transactionList.appendChild(listItem);
-// const storedTrans=JSON.parse( localStorage.getItem('transactions')) || [];
-// storedTrans.push(transText);
-//     localStorage.setItem('transactions',JSON.stringify(storedTrans));
-//   }
   function simulateTransaction(amount, type) {
     const transactionList = document.getElementById('transactionList');
     const listItem = document.createElement('li');
-    const transText = `${type === 'debit' ? '-' : '+'}$${amount}, ${new Date().toLocaleString()}`;
-    
-  
+    const transText = `${type === 'debit' ? '-' : '+'}${amount} BTC, ${new Date().toLocaleString()}`;
     const textNode = document.createTextNode(transText);
-    listItem.appendChild(textNode);
     
+    listItem.appendChild(textNode);
     transactionList.appendChild(listItem);
 
-    const storedTrans = JSON.parse(localStorage.getItem('transactions')) || [];
+    const storedTrans = JSON.parse(localStorage.getItem(`${username}_transactions`)) || [];
     storedTrans.push(transText);
-    localStorage.setItem('transactions', JSON.stringify(storedTrans));
+    localStorage.setItem(`${username}_transactions`, JSON.stringify(storedTrans));
   }
 
   

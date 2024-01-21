@@ -1,0 +1,169 @@
+html{
+  scroll-behavior: smooth;
+}
+body{
+  text-transform: capitalize;   
+  font-family:'Nunito',sans-serif;
+  background-color: rgba(152, 152, 180, 0.3);
+
+}
+.action {
+    background-color: aquamarine;
+    margin:25px;
+   text-align: justify;
+   border-radius: 15px;
+   border: 2px solid black;
+   padding: 7px;                  
+   height: 25px;
+   color: beige;
+   width:25px;
+   box-shadow:2px 5px 7px gray ;
+   transition: all 0.4s ease-in-out;
+  scale: 1.5;
+  background-image: url(crypto.jpeg);
+  background-size:auto
+  ;
+}
+.action:hover {
+scale: 1.65;
+box-shadow: 4px 9px 12px gray;
+}
+.actCenter{
+    background-color: rgba(105, 200, 238, 0.3);
+    display: grid;
+    justify-content: space-around;
+    align-items: center;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    margin: 55px;
+    margin-top: -15px;
+    padding: 5%;
+    border-radius: 25px;
+    gap: 0% 5%;
+    justify-items: center ;
+    background-image:url(c2.jpeg) ;
+    background-size: auto;
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+background: transparent;
+backdrop-filter:blur(20px);
+border-radius: 20px;
+border: 2px solid black;
+  padding: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  width: max-content;
+  height: max-content;
+}
+.balanceIcon{
+  font-size: xx-large;
+  font-weight: 700;
+}
+#transferForm{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: auto;
+  height: auto ;
+  align-items: center;
+}
+#transferAmount{
+  border-radius: 10px;
+  padding: 8px;
+  border:2px;
+  width: 300px;  
+  background-color:rgba(103, 209, 255, 0.902);
+}
+
+#transfer{
+
+  border-radius: 10px;
+  height: 35px;
+  width: 100px;
+  background:linear-gradient(rgb(255, 23, 23),rgb(164, 0, 0) ) ;
+  transform: translateZ(-5px);
+  margin-left: 105px;
+}
+
+
+#transferAmount:focus{
+  border-radius: 10px;
+  padding: 6px;
+  width: 300px;
+border:2px solid aqua;
+}
+   #name{
+    font-weight: 600;
+    font-size: large;
+    margin-left: 75px;
+   }
+.profile {transform: translateX(30px);
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+background-color: rgba(73, 132, 180,0.3);
+border-radius: 15px;
+background-image:url(c1.jpeg) ;
+background-size:contain;
+color: wheat;
+margin-right: 600px;
+margin-left:25px;
+padding-left: 15px;
+justify-content: space-between;
+justify-items: center;
+} 
+#acc {
+    scale: 2;
+    margin-top: 37px;
+    margin-left: -105px;
+}
+#hello {
+  transform: translateX(-25px);
+}
+#caption{
+  transform: translateX(-45px)
+  translateY(3px);
+}
+#bit {
+  /*border: 2px solid  rgb(224, 190, 0);*/
+  border-radius:5px;
+  width:0px;
+  height:0px;
+  margin-left: 15px;
+scale: 2;
+color: rgb(156, 47, 47);
+outline-color:blueviolet;
+
+transform: translate(-5px,-5px);
+}
+.hd{
+  margin-left:25px;
+  margin-top: 89px;
+}
+#nav{
+  background: linear-gradient(rgba(62, 53, 182, 0.8),rgb(0, 11, 80));
+  display: flex;
+  justify-content: space-around;
+}
+.sticky{
+position:fixed;
+top: 0;
+width: 100%;
+border-radius: 15px;
+}
+#navItems {
+transition: all 0.4s ease;
+}
+#navItems:hover {
+  background-color:rgb(54, 69, 147);
+  padding: 0px 15px;
+  border-radius: 7px;
+}
+.navEle {
+  color:blanchedalmond;
+  padding: 10px;
+}

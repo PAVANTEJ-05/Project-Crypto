@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="crypto.css">
+    <link rel="icon" href="wallet.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="nav" class="sticky">
+        <div id="navItems"><a href="crypto.html" style="text-decoration: none;"><h4 class="navEle">home</h4></a></div>
+        <div id="navItems"><a href="#" style="text-decoration: none;"><h4 class="navEle"> about</h4></a></div>
+        <div id="navItems"><a href="https://www.coinbase.com/en-gb/learn/crypto-basics/what-is-cryptocurrency" style="text-decoration: none;"><h4 class="navEle"> Learn More</h4></a></div>
+        <div id="navItems"><a href="" style="text-decoration: none;" id="signout"><h4 class="navEle">logout</h4></a></div>
+     </div>
+     <header style="margin-top: 89px;">
+        <h1>About <em style="text-transform: uppercase;">crypto wallet</em></h1>
+    </header>
+
+    <section>
+        <h2>Our Mission</h2>
+        <p>At crypto wallet, our mission is to empower individuals around the world with easy and secure access to the exciting world of cryptocurrencies. We believe in fostering financial inclusivity and providing a user-friendly platform that allows everyone to manage, store, and transact with digital assets effortlessly.</p>
+    </section>
+
+    <section>
+        <h2>Who We Are</h2>
+        <p>Established in 2024, crypto wallet is a cutting-edge cryptocurrency wallet solution developed by a team of passionate blockchain enthusiasts and experienced developers. With a shared commitment to revolutionizing the way people interact with digital currencies, we aim to make crypto accessible to both newcomers and seasoned enthusiasts alike.</p>
+    </section>
+
+    <section>
+        <h2>What Sets Us Apart</h2>
+        <ul>
+            <li><strong>Security First:</strong> Your security is our top priority. crypto wallet employs state-of-the-art security measures to ensure the safety of your digital assets.</li>
+            <li><strong>User-Friendly Interface:</strong> We've designed crypto wallet with a user-friendly interface, making it easy for anyone to manage their digital assets with confidence.</li>
+            <li><strong>Wide Range of Supported Cryptocurrencies:</strong> crypto wallet supports a diverse array of cryptocurrencies, providing you with the flexibility to manage a portfolio of various digital assets all in one place.</li>
+            <li><strong>Seamless Transactions:</strong> Experience swift and seamless transactions with crypto wallet. Our wallet is equipped with features that facilitate quick and efficient transfers.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Get Started Today!</h2>
+        <p>Join the crypto wallet community today and embark on a journey into the future of finance. Whether you're a casual user or a seasoned crypto enthusiast, we have the tools and resources to cater to your needs. Your digital assets, your control – it's that simple.</p>
+        <p><a href="#">Download Now</a> or <a href="login.html">Create Your Account</a> and discover the possibilities that crypto wallet brings to the world of cryptocurrency.</p>
+    </section>
+
+    <footer>
+        <p>For inquiries or support, feel free to <a href="#">contact us</a>.</p>
+        <p>Thank you for choosing crypto wallet – Your Trusted Partner in Cryptocurrency Management!</p>
+        <div>
+            <p style="text-align: center;">
+                <strong >copyright &copy; 2024 by crypto wallet</strong>
+            </p>
+        </div>
+    </footer>
+ 
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCDhDLSwdwXKwzVrQjJ6KbHJXm0SprybZk",
+      authDomain: "crypto-wallet-ad568.firebaseapp.com",
+      projectId: "crypto-wallet-ad568",
+      storageBucket: "crypto-wallet-ad568.appspot.com",
+      messagingSenderId: "672606049478",
+      appId: "1:672606049478:web:5f5c2364a13b436a99f3c7",
+      measurementId: "G-L631TGFELZ"
+    };
+  
+    // Initialize Firebase  
+    const app = initializeApp(firebaseConfig);
+    const database =getDatabase(app);
+    const auth = getAuth();
+    const user =auth.currentUser
+      onAuthStateChanged(auth, (user) => {
+if (user) {
+// User is signed in, see docs for a list of available properties
+// https://firebase.google.com/docs/reference/js/auth.user
+const uid = user.uid;
+// ...
+} else {
+// User is signed out
+// ...
+
+}
+});
+signout.addEventListener('click',(e)=>{
+const auth = getAuth();
+signOut(auth).then(() => {
+// Sign-out successful.
+alert('logged out!')
+window.location.href='login.html'
+}).catch((error) => {
+// An error happened.
+const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+});
+})
+    
+  </script>
+</html>

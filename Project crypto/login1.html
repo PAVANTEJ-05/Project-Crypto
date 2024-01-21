@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login Page</title>       
+</head>
+<body>
+<h1 id="quote">Experience the era of <em>Crypto Currency</em></h1>
+<div class="login-container">
+    <button class="login" onclick="openLoginPopup()">Login</button>
+    <button class="signup" onclick="openSignupPopup()">Sign Up</button>
+</div>
+
+<div id="loginPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="email" style="align-self: flex-start;">Email:</label>
+            <input type="email" class="loginEmail" id="loginEmail" placeholder="example@gmail.com" required>
+            <br>
+            <label for="password" style="align-self: first baseline;">Password:</label>
+            <input type="password" class="loginPassword" id="loginPassword" placeholder="Enter password" required>
+            <br>
+            <input type="submit" class="login" id='login' value="Login" >
+            </form>
+    </div>
+</div>
+
+<div id="signupPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <label for="email"  style="align-self: flex-start;">Email:</label>
+            <input type="email" name="email" id="signupEmail" placeholder="example@gmail.com">
+            <br>
+            <label for="password" style="align-self: first baseline;">Password:</label>
+            <input type="password" name="password" id="signupPassword" placeholder="Enter password" >
+            <br>
+            <!-- <input type="submit" name="signUp" id='sighUp' class="signUp" value="Sign Up"> -->
+            <button id="sighUp" class="signUp" >Sign Up</button>
+        </form>
+    </div>
+</div>
+<script src="app.js"></script>
+    
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDuVRnuTxDhHbqJddUqwNpwhU9xl4Nd4dE",
+      authDomain: "blockchain-d6418.firebaseapp.com",
+      projectId: "blockchain-d6418",
+      storageBucket: "blockchain-d6418.appspot.com",
+      messagingSenderId: "322497998880",
+      appId: "1:322497998880:web:c9d6f596c3cad86c018c45",
+      measurementId: "G-2KQQ1R9BS4"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+
+    // console.log(app);
+    document.getElementById("sighUp").addEventListener("click", function() {
+      
+        var email =  document.getElementById("signupEmail").value;
+		  var password = document.getElementById("signupPassword").value;
+		  //For new registration
+		  createUserWithEmailAndPassword(auth, email, password)
+		  .then((userCredential) => {
+		    // Signed in 
+		    const user = userCredential.user;
+		    console.log(user);
+		    alert("Registration successfully!!");
+            window.location='about.html';
+		    // ...
+		  })
+		  .catch((error) => {
+		    const errorCode = error.code;
+		    const errorMessage = error.message;
+		    // ..
+		    alert(errorMessage);
+		  });		 
+      
+		 
+	  });
+  </script>
+</html>

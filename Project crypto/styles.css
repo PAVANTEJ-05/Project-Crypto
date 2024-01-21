@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;align-items: center;
+   /* display: flex;
+    justify-content: flex-end;
+    
+    height: 100vh;*/
+    background-color: #f0f0f0;
+    background-image:url(crypto.jpeg) ;
+    background-size:100%;
+
+}
+.details{
+    color: gainsboro;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background: transparent;
+    backdrop-filter:blur(7px) ;
+}
+#quote{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        transform: translateX(420px);
+    color: rgba(174, 62, 174, 0.945);
+    scale: 1.6;
+    margin-top: 30px;
+}
+#loginForm {
+    display:flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   width: 300px;
+   height: auto ;
+}
+#signupForm{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 300px;
+    height: auto ;
+}
+.popup{
+    border-radius: 20px;
+}
+.popup-content{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height:max-content;
+}
+.loginEmail ,#signupEmail,#username {
+    border-radius: 7px;
+    border: none;
+   margin-top: 5px;
+   display: block;
+   padding: 10px;
+   outline: none;
+   height: 12px;
+}
+.loginEmail:focus,#signupEmail:focus{
+    border-radius: 7px;
+    padding: 8px;
+    border: 2px solid rgb(121, 21, 167);
+}
+.loginPassword,#signupPassword{
+    border-radius: 7px;
+    border: none;
+   margin-top: 5px;
+   display: block;
+   padding: 10px;
+   outline: none;
+   height: 12px;
+}
+.loginPassword:focus,#signupPassword:focus,#username:focus{
+    border-radius: 7px;
+    padding: 8px;
+    border: 2px solid rgb(121, 21, 167);
+}
+.login-container {
+    text-align:center;
+    transform: translateX(625px);
+    margin-top: -65px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    background:linear-gradient(rgb(0, 255, 0),green) ;
+    border-radius: 10px;
+}
+.login{
+    padding: 10px 20px;
+    font-size: 20px;
+    margin: 10px;
+    background:linear-gradient(rgb(0, 255, 0),green) ;
+    border-radius: 10px;
+    background-image: url(login.jpeg);
+    background-size:auto ;
+    color: antiquewhite;
+ 
+}
+
+.signup,.signUp{
+    background: linear-gradient(gold,rgb(168, 143, 0));
+    padding: 10px 20px;
+    font-size: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ background: transparent;
+ backdrop-filter:blur(20px);
+ border: 2px solid black;
+    padding: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}

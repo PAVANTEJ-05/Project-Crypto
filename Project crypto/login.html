@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login Page</title>     
+    <link rel="icon" href="wallet.png">  
+    
+</head>
+<body>
+<h1 id="quote">Experience The Era of <em>Crypto Currency</em></h1>  
+<div class="login-container">
+    <button class="login" id="" onclick="openLoginPopup()" >Login</button>
+    <button class="signup" id="" onclick="openSignupPopup()">Sign Up</button>
+</div>
+<div class="details" style="padding:10px 65px;">
+    <h1 style="color:darkgoldenrod">What Is a Crypto Wallet?</h1>
+  <h3 style="color:mintcream;"> Cryptocurrency wallets store users’ public and private keys, while providing an easy-to-use interface to manage crypto balances. They also support cryptocurrency transfers through the blockchain. Some wallets even allow users to perform certain actions with their crypto assets, such as buying and selling or interacting with decentralised applications (dapps).
+    
+    It is important to remember that cryptocurrency transactions do not represent a ‘sending’ of crypto tokens from a person’s mobile phone to someone else’s mobile phone. When sending tokens, a user’s private key signs the transaction and broadcasts it to the blockchain network. The network then includes the transaction to reflect the updated balance in both the sender’s and recipient’s address.
+    
+    So, the term ‘wallet’ is somewhat of a misnomer, as crypto wallets don’t actually store cryptocurrency in the same way physical wallets hold cash. Instead, they read the public ledger to show the balances in a user’s addresses, as well as hold the private keys that enable the user to make transactions.
+  </h3> <img style="height:300px; transform: translateX(00px);" src="Crypto-Companies-.jpeg" alt="crypto-wallet">
+<h1 style=" color: coral;">Why a Crypto Wallet Is Needed?</h1>
+<h3>A user’s cryptocurrency is only as safe as the method they use to store it. While crypto can technically be stored directly on an exchange, it is not advisable to do so unless in small amounts or with the intention of trading frequently. 
+
+For larger amounts, it’s recommended that a user withdraws the majority to a crypto wallet, whether that be a hot wallet or a cold one. This way, they retain ownership of their private keys and have full power and control over their own finances. </h3>
+
+<h1 style="color: cornflowerblue;">How Do Cryptocurrency Wallets Work?</h1>
+<h3>As mentioned earlier, a wallet doesn’t technically hold a user’s coins. Instead, it holds the key to their coins, which are stored on public blockchain networks. 
+
+In order to perform various transactions, a user needs to verify their address via a private key that comes in a set of specific codes. The speed and security often depend on the kind of wallet a user has.</div>
+</h3><div id="loginPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" id="x" onclick="closePopup('loginPopup')">&times;</span>
+        <h2>Login</h2>
+        <div id="loginForm">
+            <label for="email" style="align-self: flex-start;">Email:</label>
+            <input type="email" class="loginEmail" id="loginEmail" placeholder="example@gmail.com" required>
+            <br>
+            <label for="password" style="align-self: first baseline;">Password:</label>
+            <input type="password" class="loginPassword" id="loginPassword" placeholder="Enter password" required>
+            <br>
+            <button  class="login" id='login' >Login</button>
+        </div>
+    </div>
+</div>
+
+<div id="signupPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('signupPopup')">&times;</span>
+        <h2>Sign Up</h2>
+        <div id="signupForm">
+            <label for="username"  style="align-self: flex-start;" >Username:</label>
+            <input type="text" id="username" placeholder="Username" required>
+            <br>
+            <label for="email"  style="align-self: flex-start;">Email:</label>
+            <input type="email" name="email" id="signupEmail" placeholder="example@gmail.com">
+            <br>
+            <label for="password" style="align-self: first baseline;">Password:</label>
+            <input type="password" name="password" id="signupPassword" placeholder="Enter password" >
+            <br>
+            <!-- <input type="submit" name="signUp" id='sighUp' class="signUp" value="Sign Up"> -->
+            <button  id="signUp" class="signUp"  >Sign Up</button>
+        </div>
+    </div>
+</div>
+<script src="app.js"></script>
+    </body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase , set , ref, update} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword , signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCDhDLSwdwXKwzVrQjJ6KbHJXm0SprybZk",
+      authDomain: "crypto-wallet-ad568.firebaseapp.com",
+      projectId: "crypto-wallet-ad568",
+      storageBucket: "crypto-wallet-ad568.appspot.com",
+      messagingSenderId: "672606049478",
+      appId: "1:672606049478:web:5f5c2364a13b436a99f3c7",
+      measurementId: "G-L631TGFELZ"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database =getDatabase(app);
+    const auth = getAuth();
+   
+
+    document.querySelector('#signUp').addEventListener('click',(e)=>{
+        var username = document.getElementById('username').value;
+        var email = document.getElementById('signupEmail').value;
+        var password = document.getElementById('signupPassword').value; 
+        localStorage.setItem('username',username);
+        if(username==''){alert('please enter username')}
+        else if(Number(username.length) < 6){alert('username must contain 6 characters')}
+        else{
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed up
+            const user = userCredential.user;
+            console.log(user)
+            set(ref(database,'users/' +user.uid),{
+                username: username,
+                email: email
+            })
+            alert('User Succesfully Created!!');
+            // ...
+        })
+        .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+        // ..
+        });}
+        });
+    login.addEventListener('click',(e) => {
+        var email = document.getElementById('loginEmail').value;
+        var password = document.getElementById('loginPassword').value;
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in    
+            const user = userCredential.user;
+            console.log(user);
+            const dt = new Date();
+            // ...
+            update(ref(database,'users/' + user.uid),{
+            last_login: dt,
+                })
+
+            alert('Succesfully Logged In!');
+            window.location.href="crypto.html"
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorMessage);
+        });
+    })
+</script>  
+</html>
